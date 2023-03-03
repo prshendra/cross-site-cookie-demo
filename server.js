@@ -8,12 +8,6 @@ const cert = fs.readFileSync('./cert/cert.pem')
 const server = https.createServer({key, cert}, app)
 const PORT = 3000;
 
-app.use(express.json())
-
-app.get('/', (req, res) => {
-  res.send('go to /get-cookie to get cookie');
-})
-
 app.get('/get-cookie', (req, res) => {
   res.set({
     // These first 2 headers allow cross-site cookie to work
@@ -31,5 +25,5 @@ app.get('/get-cookie', (req, res) => {
 })
 
 server.listen(PORT, () => {
-  console.log(`Server started at port ${PORT}`);
+  console.log(`App started at port ${PORT}`);
 })
