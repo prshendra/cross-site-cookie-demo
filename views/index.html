@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="req">Req</button>
+  <script>
+    var btn = document.querySelector('#req')
+    btn.addEventListener('click', function(e) {
+      fetch('https://localhost:3000/get-cookie',{
+        // `credentials` key is required to allow cross-site cookie
+        // see: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#sending_a_request_with_credentials_included
+        credentials:"include", 
+      })
+        .then(res => res.text())
+        .then(data => console.log(data));
+    })
+  </script>
+</body>
+</html>
